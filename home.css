@@ -1,0 +1,79 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #752B2C;
+}
+nav{
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    
+    box-shadow: 3px 10px 5px -5px rgba(0,0,0,0.23);
+-webkit-box-shadow: 3px 10px 5px -5px rgba(0,0,0,0.23);
+-moz-box-shadow: 3px 10px 5px -5px rgba(0,0,0,0.23);
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+}
+
+#myimage{
+    width: 700px;
+    height: 400px;
+}
+
+.img-zoom-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    
+  }
+  .container-text{
+    height: 100px ;
+
+  }
+  .img-zoom-lens {
+    position: absolute;
+    border: 1px solid #d4d4d4;  
+    /*set the size of the lens:*/
+    width: 40px;
+    height: 40px;
+  }
+  
+  .img-zoom-result {
+    border: 1px solid #d4d4d4;
+    /*set the size of the result div:*/
+    width: 400px;
+    height: 400px;
+  }
+
+
+
+
+.container-logo-img{
+    object-fit: cover;
+    width: 300px;
+    height: 80px;
+    margin: 0px 8px;
+}
+img{
+    height: 80px;
+}
+p{
+    color: white;
+}
+#mostrar-ubicacion{
+    margin-top: 10px;
+}
