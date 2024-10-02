@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./home.css" >
     <title>Pagina de Pedregal UDEP</title>
     <script>
+        
         function imageZoom(imgID, resultID) {
           var img, lens, result, cx, cy;
           img = document.getElementById(imgID);
@@ -46,6 +47,7 @@
             lens.style.top = y + "px";
             /*display what the lens "sees":*/
             result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+            showPixelValue(Math.floor(x), Math.floor(y));
           }
           function getCursorPos(e) {
             var a, x = 0, y = 0;
@@ -61,6 +63,22 @@
             return {x : x, y : y};
           }
         }
+        async function showPixelValue(x, y) {
+            const matrix = await fetch("matrix.json");
+            const pixelValues= await matrix.json();
+            const valorPixel = document.getElementById('valor-pixel');
+            const ubicacion = document.getElementById('mostrar-ubicacion');
+            
+            const scaledX = Math.floor(x * 2);
+            const scaledY = Math.floor(y * 2);
+
+            const dataX = Math.min(Math.max(scaledX, 0), 2080 - 1);
+            const dataY = Math.min(Math.max(scaledY, 0), 1080- 1);
+            
+            const valor = pixelValues[dataY][dataX];  
+            valorPixel.textContent = `Valor del píxel: ${valor}`;
+            ubicacion.textContent = `Ubicación: (${x}, ${y})`;
+        }
         </script>
 </head>
 <body>
@@ -74,20 +92,20 @@
     </nav>
     <section class="container">
         <div class="img-zoom-container" id="container-zoom-img">
-            <img id="myimage" src="https://res.cloudinary.com/dabyqnijl/image/upload/v1727820814/sasmpvdugcxzajqmntg8.png" >
+            <img id="myimage" src="https://res.cloudinary.com/dabyqnijl/image/upload/v1727901141/qpxqhgzzklje4qnbfpzp.png" >
             <div id="myresult" class="img-zoom-result"></div>
         </div>
         <div class="container-text">
             <p id="mostrar-ubicacion"></p>
+            <p id="valor-pixel"></p>
         </div>
     </section>
     <footer>
 
     </footer>
     <script>
-        // Initiate zoom effect:
         imageZoom("myimage", "myresult");
-        </script>
+    </script>
     <script src="main.js" ></script>
 </body>
 </html>
